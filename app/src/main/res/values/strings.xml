@@ -10,4 +10,10 @@
       the License.
       -->
     <string name="app_name">AndroidDevChallenge</string>
+
+    <string name="title">Countdown Timer</string>
+    <string name="select_time">Select your time</string>
+    <string name="time_short_hours">h</string>
+    <string name="time_short_minutes">m</string>
+    <string name="time_short_seconds">s</string>
 </resources>

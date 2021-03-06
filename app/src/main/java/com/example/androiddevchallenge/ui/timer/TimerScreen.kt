@@ -13,27 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.ui.timer
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-
-private val LightColorPalette = lightColors(
-    primary = Color(0xFFFFC435),
-    primaryVariant = Color(0xFFFFD05F),
-    secondary = Color(0xFF6A2B57),
-    secondaryVariant = Color(0xFF5E224B),
-    onBackground = Color.White
-)
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.androiddevchallenge.ui.timer.items.timer.Timer
 
 @Composable
-fun MyTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colors = LightColorPalette,
-        typography = typography,
-        shapes = shapes,
-        content = content
+internal fun TimerScreen() {
+    val viewModel = viewModel(TimerViewModel::class.java)
+    val viewState by viewModel.state.collectAsState()
+
+    Timer(
+        viewState = viewState,
+        pickerListener = viewModel,
+        actionListener = viewModel::onTimerAction,
+        headerListener = viewModel::showTimerPicker
     )
 }
